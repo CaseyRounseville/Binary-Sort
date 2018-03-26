@@ -33,12 +33,8 @@ public class BinarySort {
 	public static int binarySearch(int[] arr, int target, int start, int end) {
 		System.out.println("start: " + start + "\tend: " + end + "\ttarget: " + target);
 		
-		if (start <= end) {
-			if (arr[start] < target) {
-				return start + 1;
-			} else {
-				return start;
-			}
+		if (end < start) {
+			return start;
 		}
 		
 		int mid = (start + end) / 2;
@@ -46,11 +42,7 @@ public class BinarySort {
 		if (arr[mid] == target) {
 			return mid;
 		} else if (arr[mid] > target) {
-			if (mid - 1 == -1) {
-				return 0;
-			} else {
-				return binarySearch(arr, target, start, mid - 1);
-			}
+			return binarySearch(arr, target, start, mid - 1);
 		} else {
 			return binarySearch(arr, target, mid + 1, end);
 		}
